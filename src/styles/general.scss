@@ -6,7 +6,7 @@ body {
 	font-family: 'Krub', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: $background;
+	background-color: $bg-primary;
 }
 
 .appHeader {
@@ -38,5 +38,43 @@ body {
 
 	@media screen and (min-width: $breakpoint-xl) {
 		max-width: 1140px;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+
+	@media screen and (min-width: $breakpoint-lg) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.addItemContainer {
+	@media screen and (min-width: $breakpoint-lg) {
+		grid-row: 1;
+		grid-column: 1 / span 3;
+	}
+}
+
+.awaitingContainer {
+	@media screen and (min-width: $breakpoint-lg) {
+		grid-row: 2;
+		grid-column: 1;
+	}
+}
+
+.inProgressContainer {
+	@media screen and (min-width: $breakpoint-lg) {
+		grid-row: 2;
+		grid-column: 2;
+	}
+}
+
+.doneContainer {
+	@media screen and (min-width: $breakpoint-lg) {
+		grid-row: 2;
+		grid-column: 3;
 	}
 }

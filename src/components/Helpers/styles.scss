@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.boxWrapper {
+	border: 1px solid $border;
+}
+
+.boxTitleWrapper {
+	padding: 1rem;
+	background-color: $bg-secondary;
+}
+
+.boxTitle {
+	margin: 0;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+.boxContentWrapper {
+	padding: 1rem;
+	background-color: #fff;
+}
