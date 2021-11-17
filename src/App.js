@@ -1,4 +1,5 @@
 import { BoxWrapper } from './components/Helpers/index';
+import AddItemForm from './components/AddItemForm';
 import './styles/general.scss';
 
 const App = () => (
@@ -9,9 +10,7 @@ const App = () => (
 		<div className="container grid">
 			<div className="addItemContainer">
 				<BoxWrapper title="Add an item">
-					Vivamus consectetuer hendrerit lacus. Cras ultricies mi eu turpis hendrerit fringilla. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Maecenas nec odio et ante tincidunt tempus.
-					Nullam quis ante. Curabitur nisi. Nulla consequat massa quis enim. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna.
-					Ut non enim eleifend felis pretium feugiat. Nulla sit amet est. In consectetuer turpis ut velit. Cras varius.
+					<AddItemForm />
 				</BoxWrapper>
 			</div>
 			<div className="awaitingContainer">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Krub:wght@200;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krub:wght@300;700&display=swap');
 @import './variables.scss';
 
 body {
@@ -7,6 +7,21 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: $bg-primary;
+}
+
+input,
+textarea {
+	font-family: 'Krub', sans-serif;
+	font-size: 14px;
+	padding: 0.5rem;
+
+	&:focus {
+		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+	}
+}
+
+textarea {
+	resize: vertical;
 }
 
 .appHeader {

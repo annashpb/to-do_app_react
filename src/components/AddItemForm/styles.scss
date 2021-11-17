@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.inputContainer {
+	padding-block: 1rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.5rem;
+
+	@media screen and (min-width: $breakpoint-md) {
+		grid-template-columns: 1fr 4fr;
+	}
+}
+
+.timeReqWrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 80px);
+	gap: 1.5rem;
+}
+
+.timeReqBox {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.25rem;
+}
+
+.timeReqLabel {
+	font-size: 0.75rem;
+	text-align: center;
+}
