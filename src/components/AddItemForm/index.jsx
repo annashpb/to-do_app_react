@@ -22,6 +22,12 @@ const AddItemForm = () => {
 		setAddChecklistItem(false);
 	}
 
+	const removeChecklistItemHandle = i => {
+		const CL = [...checklist];
+		CL.splice(i, 1);
+		setChecklist(CL);
+	}
+
 	return (
 		<form>
 			<div className="inputContainer">
@@ -69,7 +75,7 @@ const AddItemForm = () => {
 										type="button"
 										name="remove-checklist-item"
 										title="Remove item"
-										// onClick={() => removeChecklistItemHandle(i)}
+										onClick={() => removeChecklistItemHandle(i)}
 										className="CIBtn remove"
 									>
 										&#10007;
