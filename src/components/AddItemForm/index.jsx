@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './styles.scss';
 
 const AddItemForm = () => {
+	const [addChecklistItem, setAddChecklistItem] = useState(false);
+	const [checklist, setChecklist] = useState([]);
+	const newChecklistItem = useRef();
+
+	const newChecklistItemHandle = () => {
+		setAddChecklistItem(true);
+	}
+
+	const addChecklistItemHandle = () => {		
+		if (newChecklistItem && newChecklistItem.current && newChecklistItem.current.value && newChecklistItem.current.value.length > 0) {
+			checklist.push(newChecklistItem.current.value);
+			setChecklist(checklist);
+			setAddChecklistItem(false);
+		}
+	}
+
+	const cancelChecklistItemHandle = () => {
+		setAddChecklistItem(false);
+	}
+
 	return (
 		<form>
 			<div className="inputContainer">
@@ -24,6 +44,50 @@ const AddItemForm = () => {
 					name="description"
 					rows="5"
 				/>
+			</div>
+
+			<div className="inputContainer">
+				<div>
+					Checklist
+				</div>
+				<div>
+					{checklist.length > 0 && (
+						<ul style={{ marginTop: '0' }}>
+							{checklist.map(item => (
+								<li className="checklistItem">{item}</li>
+							))}
+						</ul>
+					)}
+					{addChecklistItem && (
+						<div className="newCIWrapper">
+							<input type="text" name="checklist-item" autoFocus={true} ref={newChecklistItem} />
+							<button
+								type="button"
+								name="add-checklist-item"
+								onClick={addChecklistItemHandle}
+								className="newCIBtn add"
+							>
+								&#10003;
+							</button>
+							<button
+								type="button"
+								name="cancel-checklist-item"
+								onClick={cancelChecklistItemHandle}
+								className="newCIBtn cancel"
+							>
+								&#10007;
+							</button>
+						</div>
+					)}
+					<button
+						type="button"
+						onClick={newChecklistItemHandle}
+						className="checklistAddBtn"
+						disabled={addChecklistItem}
+					>
+						Add item
+					</button>
+				</div>
 			</div>
 
 			<div className="inputContainer">
