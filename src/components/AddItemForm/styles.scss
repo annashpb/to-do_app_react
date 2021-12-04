@@ -11,15 +11,45 @@
 	}
 }
 
-.checklistItem {
-	margin-bottom: 0.5rem;
-}
-
+.checklistItem,
 .newCIWrapper {
 	margin-bottom: 0.5rem;
 	display: grid;
-	grid-template-columns: 10fr 1fr 1fr;
 	gap: 0.5rem;
+}
+
+.checklistItem {
+	margin-bottom: 0.5rem;
+	grid-template-columns: 16fr 1fr 1fr;
+	position: relative;
+
+	&::before {
+		content: '\2022';
+		position: absolute;
+		left: -1.5rem;
+		top: 0.5re;
+	}
+}
+
+.CIBtn {
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	justify-self: center;
+	background-color: transparent;
+	cursor: pointer;
+
+	&.edit {
+		color: #0000ff;
+	}
+
+	&.remove {
+		color: #ff0000;
+	}
+}
+
+.newCIWrapper {
+	grid-template-columns: 10fr 1fr 1fr;
 }
 
 .newCIBtn {

@@ -53,8 +53,28 @@ const AddItemForm = () => {
 				<div>
 					{checklist.length > 0 && (
 						<ul style={{ marginTop: '0' }}>
-							{checklist.map(item => (
-								<li className="checklistItem">{item}</li>
+							{checklist.map((item, i) => (
+								<li className="checklistItem">
+									<span>{item}</span>
+									<button
+										type="button"
+										name="edit-checklist-item"
+										title="Edit"
+										// onClick={() => editChecklistItemHandle(i)}
+										className="CIBtn edit"
+									>
+										&#9998;
+									</button>
+									<button
+										type="button"
+										name="remove-checklist-item"
+										title="Remove item"
+										// onClick={() => removeChecklistItemHandle(i)}
+										className="CIBtn remove"
+									>
+										&#10007;
+									</button>
+								</li>
 							))}
 						</ul>
 					)}
@@ -64,6 +84,7 @@ const AddItemForm = () => {
 							<button
 								type="button"
 								name="add-checklist-item"
+								title="Add item"
 								onClick={addChecklistItemHandle}
 								className="newCIBtn add"
 							>
@@ -72,6 +93,7 @@ const AddItemForm = () => {
 							<button
 								type="button"
 								name="cancel-checklist-item"
+								title="Cancel"
 								onClick={cancelChecklistItemHandle}
 								className="newCIBtn cancel"
 							>
