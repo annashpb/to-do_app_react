@@ -1,11 +1,11 @@
 import React from 'react';
 import Checklist from './Checklist';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 const AddItemForm = () => {
 	return (
 		<form>
-			<div className="inputContainer">
+			<div className={styles.inputContainer}>
 				<label htmlFor="title">
 					<span style={{ color: 'red' }}>*</span>
 					{` Title`}
@@ -17,7 +17,7 @@ const AddItemForm = () => {
 				/>
 			</div>
 
-			<div className="inputContainer">
+			<div className={styles.inputContainer}>
 				<label htmlFor="description">
 					Description
 				</label>
@@ -27,7 +27,7 @@ const AddItemForm = () => {
 				/>
 			</div>
 
-			<div className="inputContainer">
+			<div className={styles.inputContainer}>
 				<div>
 					Checklist
 				</div>
@@ -36,7 +36,7 @@ const AddItemForm = () => {
 				</div>
 			</div>
 
-			<div className="inputContainer">
+			<div className={styles.inputContainer}>
 				<label htmlFor="duedate">
 					Due date
 				</label>
@@ -46,43 +46,43 @@ const AddItemForm = () => {
 				/>
 			</div>
 
-			<div className="inputContainer">
+			<div className={styles.inputContainer}>
 				<span>Time required</span>
-				<div className="timeReqWrapper">
-					<div className="timeReqBox">
+				<div className={styles.timeReqWrapper}>
+					<div className={styles.timeReqBox}>
 						<input
 							type="number"
 							name="nr-of-days"
 							min="0"
 							max="99"
 							step="1"
-							className="timeReqInput"
+							className={styles.timeReqInput}
 						/>
-						<label htmlFor="nr-of-days" className="timeReqLabel">Days</label>
+						<label htmlFor="nr-of-days" className={styles.timeReqLabel}>Days</label>
 					</div>
 
-					<div className="timeReqBox">
+					<div className={styles.timeReqBox}>
 						<input
 							type="number"
 							name="nr-of-hours"
 							min="0"
 							max="23"
 							step="1"
-							className="timeReqInput"
+							className={styles.timeReqInput}
 						/>
-						<label htmlFor="nr-of-hours" className="timeReqLabel">Hours</label>
+						<label htmlFor="nr-of-hours" className={styles.timeReqLabel}>Hours</label>
 					</div>
 
-					<div className="timeReqBox">
+					<div className={styles.timeReqBox}>
 						<input
 							type="number"
 							name="nr-of-mins"
 							min="0"
 							max="59"
 							step="1"
-							className="timeReqInput"
+							className={styles.timeReqInput}
 						/>
-						<label htmlFor="nr-of-mins" className="timeReqLabel">Minutes</label>
+						<label htmlFor="nr-of-mins" className={styles.timeReqLabel}>Minutes</label>
 					</div>
 				</div>
 			</div>

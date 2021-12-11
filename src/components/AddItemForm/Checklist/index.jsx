@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 const Checklist = () => {
 	const [addChecklistItem, setAddChecklistItem] = useState(false);
@@ -33,14 +33,14 @@ const Checklist = () => {
 			{checklist.length > 0 && (
 				<ul style={{ marginTop: '0' }}>
 					{checklist.map((item, i) => (
-						<li className="checklistItem">
+						<li className={styles.checklistItem}>
 							<span>{item}</span>
 							<button
 								type="button"
 								name="edit-checklist-item"
 								title="Edit"
 								// onClick={() => editChecklistItemHandle(i)}
-								className="itemBtn edit"
+								className={`${styles.itemBtn} ${styles.edit}`}
 							>
 								&#9998;
 							</button>
@@ -49,7 +49,7 @@ const Checklist = () => {
 								name="remove-checklist-item"
 								title="Remove item"
 								onClick={() => removeChecklistItemHandle(i)}
-								className="itemBtn remove"
+								className={`${styles.itemBtn} ${styles.remove}`}
 							>
 								&#10007;
 							</button>
@@ -58,14 +58,14 @@ const Checklist = () => {
 				</ul>
 			)}
 			{addChecklistItem && (
-				<div className="newItemWrapper">
+				<div className={styles.newItemWrapper}>
 					<input type="text" name="checklist-item" autoFocus={true} ref={newChecklistItem} />
 					<button
 						type="button"
 						name="add-checklist-item"
 						title="Add item"
 						onClick={addChecklistItemHandle}
-						className="newItemBtn add"
+						className={`${styles.newItemBtn} ${styles.add}`}
 					>
 						&#10003;
 					</button>
@@ -74,7 +74,7 @@ const Checklist = () => {
 						name="cancel-checklist-item"
 						title="Cancel"
 						onClick={cancelChecklistItemHandle}
-						className="newItemBtn cancel"
+						className={`${styles.newItemBtn} ${styles.cancel}`}
 					>
 						&#10007;
 					</button>
@@ -83,7 +83,7 @@ const Checklist = () => {
 			<button
 				type="button"
 				onClick={newChecklistItemHandle}
-				className="addItemBtn"
+				className={styles.addItemBtn}
 				disabled={addChecklistItem}
 			>
 				Add item
