@@ -6,11 +6,11 @@ const Checklist = () => {
 	const [checklist, setChecklist] = useState([]);
 	const newChecklistItem = useRef();
 
-	const newChecklistItemHandle = () => {
+	const newItemHandle = () => {
 		setAddChecklistItem(true);
 	}
 
-	const addChecklistItemHandle = () => {		
+	const addItemHandle = () => {		
 		if (newChecklistItem && newChecklistItem.current && newChecklistItem.current.value && newChecklistItem.current.value.length > 0) {
 			checklist.push(newChecklistItem.current.value);
 			setChecklist(checklist);
@@ -18,11 +18,17 @@ const Checklist = () => {
 		}
 	}
 
-	const cancelChecklistItemHandle = () => {
+	const enterPressHandle = ({ key }) => {
+		if (key === 'Enter') {
+			addItemHandle();
+		}
+	}
+
+	const cancelItemHandle = () => {
 		setAddChecklistItem(false);
 	}
 
-	const removeChecklistItemHandle = i => {
+	const removeItemHandle = i => {
 		const CL = [...checklist];
 		CL.splice(i, 1);
 		setChecklist(CL);
@@ -48,7 +54,7 @@ const Checklist = () => {
 								type="button"
 								name="remove-checklist-item"
 								title="Remove item"
-								onClick={() => removeChecklistItemHandle(i)}
+								onClick={() => removeItemHandle(i)}
 								className={`${styles.itemBtn} ${styles.remove}`}
 							>
 								&#10007;
@@ -59,12 +65,18 @@ const Checklist = () => {
 			)}
 			{addChecklistItem && (
 				<div className={styles.newItemWrapper}>
-					<input type="text" name="checklist-item" autoFocus={true} ref={newChecklistItem} />
+					<input
+						type="text"
+						name="checklist-item"
+						autoFocus={true}
+						ref={newChecklistItem}
+						onKeyPress={enterPressHandle}
+					/>
 					<button
 						type="button"
 						name="add-checklist-item"
 						title="Add item"
-						onClick={addChecklistItemHandle}
+						onClick={addItemHandle}
 						className={`${styles.newItemBtn} ${styles.add}`}
 					>
 						&#10003;
@@ -73,7 +85,7 @@ const Checklist = () => {
 						type="button"
 						name="cancel-checklist-item"
 						title="Cancel"
-						onClick={cancelChecklistItemHandle}
+						onClick={cancelItemHandle}
 						className={`${styles.newItemBtn} ${styles.cancel}`}
 					>
 						&#10007;
@@ -82,7 +94,7 @@ const Checklist = () => {
 			)}
 			<button
 				type="button"
-				onClick={newChecklistItemHandle}
+				onClick={newItemHandle}
 				className={styles.addItemBtn}
 				disabled={addChecklistItem}
 			>
