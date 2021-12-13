@@ -5,7 +5,10 @@ import styles from './styles.module.scss';
 const AddItemForm = () => {
 	const formSubmitHandle = e => {
 		e.preventDefault();
-		console.log(e);		
+
+		const results = {};
+		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
+		console.log(results);
 	}
 
 	return (
@@ -45,10 +48,16 @@ const AddItemForm = () => {
 				<label htmlFor="duedate">
 					Due date
 				</label>
-				<input
-					type="datetime-local"
-					name="duedate"
-				/>
+				<div className={styles.dateTimePicker}>
+					<input
+						type="date"
+						name="due-date"
+					/>
+					<input
+						type="time"
+						name="due-time"
+					/>
+				</div>
 			</div>
 
 			<div className={styles.inputContainer}>

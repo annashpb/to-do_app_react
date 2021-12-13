@@ -98,7 +98,6 @@ const Checklist = () => {
 									/>
 									<button
 										type="button"
-										name="add-checklist-item"
 										title="Add item"
 										onClick={() => approveChangesHandle(i)}
 										className={`${styles.newItemBtn} ${styles.add}`}
@@ -107,7 +106,6 @@ const Checklist = () => {
 									</button>
 									<button
 										type="button"
-										name="cancel-checklist-item"
 										title="Cancel"
 										onClick={cancelChangesHandle}
 										className={`${styles.newItemBtn} ${styles.cancel}`}
@@ -121,7 +119,6 @@ const Checklist = () => {
 									<span>{item}</span>
 									<button
 										type="button"
-										name="edit-checklist-item"
 										title="Edit"
 										onClick={() => startEditItemHandle(i)}
 										className={`${styles.itemBtn} ${styles.edit}`}
@@ -130,7 +127,6 @@ const Checklist = () => {
 									</button>
 									<button
 										type="button"
-										name="remove-checklist-item"
 										title="Remove item"
 										onClick={() => removeItemHandle(i)}
 										className={`${styles.itemBtn} ${styles.remove}`}
@@ -147,14 +143,12 @@ const Checklist = () => {
 				<div className={styles.newItemWrapper}>
 					<input
 						type="text"
-						name="checklist-item"
 						autoFocus={true}
 						ref={newChecklistItem}
 						onKeyPress={enterPressHandle}
 					/>
 					<button
 						type="button"
-						name="add-checklist-item"
 						title="Add item"
 						onClick={addItemHandle}
 						className={`${styles.newItemBtn} ${styles.add}`}
@@ -163,7 +157,6 @@ const Checklist = () => {
 					</button>
 					<button
 						type="button"
-						name="cancel-checklist-item"
 						title="Cancel"
 						onClick={cancelItemHandle}
 						className={`${styles.newItemBtn} ${styles.cancel}`}
