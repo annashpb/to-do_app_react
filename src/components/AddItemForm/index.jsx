@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Checklist from './Checklist';
 import styles from './styles.module.scss';
 
 const AddItemForm = () => {
-	const [checklist, setChecklist] = useState([])
+	const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('toDoItems')) || []);
+	const [checklist, setChecklist] = useState([]);
+	const [clCleared, setClCleared] = useState(false);
+
+	const clearFields = (e) => {
+		Array.from(e.target).forEach((evt) => (evt.value = ''));
+		setClCleared(true);
+		setTimeout(() => setClCleared(false), 0);
+	}
+
 	const formSubmitHandle = e => {
 		e.preventDefault();
 
 		const results = {};
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
 		results.checklist = checklist;
-		console.log(results);
-	}
+		setToDos([...toDos, results]);
+		clearFields(e);
+	};
+
+	useEffect(() => {
+		localStorage.setItem('toDoItems', JSON.stringify(toDos));
+	}, [toDos]);
 
 	return (
 		<form onSubmit={formSubmitHandle}>
@@ -42,7 +56,7 @@ const AddItemForm = () => {
 					Checklist
 				</div>
 				<div>
-					<Checklist setResultChecklist={setChecklist} />
+					<Checklist cleared={clCleared} setResultChecklist={setChecklist} />
 				</div>
 			</div>
 

@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './styles.module.scss';
 
-const Checklist = ({ setResultChecklist }) => {
+const Checklist = ({ cleared, setResultChecklist }) => {
 	const [checklist, setChecklist] = useState([]);
-
 	const [addChecklistItem, setAddChecklistItem] = useState(false);
 	const newChecklistItem = useRef();
 
@@ -82,6 +81,14 @@ const Checklist = ({ setResultChecklist }) => {
 	useEffect(() => {
 		setResultChecklist(checklist)
 	}, [checklist]);
+
+	// TO CLEAR THE CHECKLIST ON THE FORM SUBMIT
+	useEffect(() => {
+		if (cleared) {
+			setChecklist([]);
+			setResultChecklist([]);
+		}
+	}, [cleared]);
 
 	return (
 		<>
