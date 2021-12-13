@@ -86,7 +86,7 @@ const Checklist = () => {
 						i === itemEditing
 							? (
 								/* If the current item is the one on edit now, an input field gonna be rendered */
-								<li className={styles.newItemWrapper}>
+								<li className={styles.newItemWrapper} key={item}>
 									<input
 										type="text"
 										value={itemOnEditText}
@@ -117,7 +117,7 @@ const Checklist = () => {
 								</li>
 							) : (
 								/* In other cases a text field gonna be rendered, with edit and removing options */
-								<li className={styles.checklistItem}>
+								<li className={styles.checklistItem} key={item}>
 									<span>{item}</span>
 									<button
 										type="button"
