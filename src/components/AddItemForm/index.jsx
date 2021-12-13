@@ -3,8 +3,13 @@ import Checklist from './Checklist';
 import styles from './styles.module.scss';
 
 const AddItemForm = () => {
+	const formSubmitHandle = e => {
+		e.preventDefault();
+		console.log(e);		
+	}
+
 	return (
-		<form>
+		<form onSubmit={formSubmitHandle}>
 			<div className={styles.inputContainer}>
 				<label htmlFor="title">
 					<span style={{ color: 'red' }}>*</span>
@@ -84,6 +89,13 @@ const AddItemForm = () => {
 						/>
 						<label htmlFor="nr-of-mins" className={styles.timeReqLabel}>Minutes</label>
 					</div>
+				</div>
+			</div>
+
+			<div className={styles.inputContainer}>
+				<div />
+				<div>
+					<button type="submit" className={styles.submitBtn}>Create</button>
 				</div>
 			</div>
 		</form>
