@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .checklistItem,
 .newItemWrapper {
@@ -75,27 +76,6 @@
 }
 
 .addItemBtn {
-	padding: 0.8rem 1rem;
-	border: none;
-	background-color: #00e9b6;
-	color: #fff;
-	box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.3);
-	cursor: pointer;
-	transition: 0.2s all ease-in;
-
-	&:hover,
-	&:focus {
-		background-color: #00bb92;
-	}
-
-	&:focus {
-		outline: none;
-	}
-
-	&:disabled {
-		background-color: #ddd;
-		color: #bbb;
-		cursor: auto;
-		box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.1);
-	}
+	@include btnStyles(#fff, #00e9b6, #00bb92);
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }

@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+@mixin btnStyles ($textColor, $bgColor, $bgOnHovColor) {
+	padding: 0.8rem 1rem;
+	border: none;
+	background-color: $bgColor;
+	color: $textColor;
+	box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	transition: 0.2s all ease-in;
+
+	&:hover,
+	&:focus {
+		background-color: $bgOnHovColor;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&:disabled {
+		background-color: #ddd;
+		color: #bbb;
+		cursor: auto;
+		box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.1);
+	}
+}
