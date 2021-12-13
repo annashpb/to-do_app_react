@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checklist from './Checklist';
 import styles from './styles.module.scss';
 
 const AddItemForm = () => {
+	const [checklist, setChecklist] = useState([])
 	const formSubmitHandle = e => {
 		e.preventDefault();
 
 		const results = {};
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
+		results.checklist = checklist;
 		console.log(results);
 	}
 
@@ -40,7 +42,7 @@ const AddItemForm = () => {
 					Checklist
 				</div>
 				<div>
-					<Checklist />
+					<Checklist setResultChecklist={setChecklist} />
 				</div>
 			</div>
 

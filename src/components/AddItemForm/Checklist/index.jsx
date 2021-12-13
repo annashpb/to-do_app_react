@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './styles.module.scss';
 
-const Checklist = () => {
+const Checklist = ({ setResultChecklist }) => {
 	const [checklist, setChecklist] = useState([]);
 
 	const [addChecklistItem, setAddChecklistItem] = useState(false);
@@ -77,6 +77,11 @@ const Checklist = () => {
 		CL.splice(i, 1); // remove the item from the checklist
 		setChecklist(CL);
 	}
+
+	// TO PASS THE CHECKLIST TO A PARENT COMPONENT
+	useEffect(() => {
+		setResultChecklist(checklist)
+	}, [checklist]);
 
 	return (
 		<>
