@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Checklist from './Checklist';
 import styles from './styles.module.scss';
+import { stats } from '../../utils';
 
 const AddItemForm = () => {
 	const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('toDoItems')) || []);
@@ -19,6 +20,7 @@ const AddItemForm = () => {
 		const results = {};
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
 		results.checklist = checklist;
+		results.status = stats.aws;
 		setToDos([...toDos, results]);
 		clearFields(e);
 	};
