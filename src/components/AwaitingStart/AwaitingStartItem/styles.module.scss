@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.container {
+	border: 1px solid $border;
+	padding: 0.5rem;
+
+	&:not(:last-child) {
+		margin-bottom: 0.5rem;
+	}
+}
+
+.cardTitle {
+	font-weight: 700;
+}
+
+.particle {
+	margin-block: 0.5rem;
+}
+
+.description {
+	font-size: 0.875rem;
+}

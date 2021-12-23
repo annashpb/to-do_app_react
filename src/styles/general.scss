@@ -9,6 +9,10 @@ body {
 	background-color: $bg-primary;
 }
 
+p {
+	margin: 0;
+}
+
 input,
 textarea {
 	font-family: 'Krub', sans-serif;
