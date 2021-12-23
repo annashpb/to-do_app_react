@@ -3,6 +3,7 @@
 .container {
 	border: 1px solid $border;
 	padding: 0.5rem;
+	font-size: 0.875rem;
 
 	&:not(:last-child) {
 		margin-bottom: 0.5rem;
@@ -10,6 +11,7 @@
 }
 
 .cardTitle {
+	font-size: 1rem;
 	font-weight: 700;
 }
 
@@ -17,6 +19,6 @@
 	margin-block: 0.5rem;
 }
 
-.description {
-	font-size: 0.875rem;
-}
+// .description {
+// 	font-size: 0.875rem;
+// }

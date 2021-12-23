@@ -4,4 +4,9 @@ const stats = {
 	done: 'Done',
 };
 
-export { stats };
+const dateToDisplay = date => {
+	const dayArr = date.split('-');
+	return `${dayArr[2]}.${dayArr[1]}.${dayArr[0]}`;
+}
+
+export { stats, dateToDisplay };
