@@ -24,10 +24,21 @@ const AwaitingStartItem = ({ item }) => {
 				</ul>
 			)}
 			{item['due-date'] && (
-				<p>
-					<span>Due date:&nbsp;</span>
+				<p className={styles.particle}>
+					<strong>Due date:&nbsp;</strong>
 					<span>
-						{`${dateToDisplay(item['due-date'])} ${item['due-time']}`}
+						{dateToDisplay(item['due-date'])}
+						{item['due-time'] && ` ${item['due-time']}`}
+					</span>
+				</p>
+			)}
+			{(item['nr-of-days'] || item['nr-of-hours'] || item['nr-of-mins']) && (
+				<p className={styles.particle}>
+					<strong>Time required:</strong>
+					<span>
+						{item['nr-of-days'] && ` ${item['nr-of-days']}d`}
+						{item['nr-of-hours'] && ` ${item['nr-of-hours']}h`}
+						{item['nr-of-mins'] && ` ${item['nr-of-mins']}m`}
 					</span>
 				</p>
 			)}
