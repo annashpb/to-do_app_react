@@ -6,12 +6,16 @@ const AwaitingStartItem = ({ item }) => {
 
 	return (
 		<div className={styles.container}>
-			<p className={styles.cardTitle}>
-				{item.title}
-			</p>
-			<p className={classnames(styles.particle, styles.description)}>
-				{item.description}
-			</p>
+			{item.title && (
+				<p className={styles.cardTitle}>
+					{item.title}
+				</p>
+			)}
+			{item.description && (
+				<p className={classnames(styles.particle, styles.description)}>
+					{item.description}
+				</p>
+			)}
 		</div>
 	);
 };
