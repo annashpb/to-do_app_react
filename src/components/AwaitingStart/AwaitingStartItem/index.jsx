@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { dateToDisplay } from '../../../utils';
 import styles from './styles.module.scss';
 
 const AwaitingStartItem = ({ item }) => {
+	const [status, setStatus] = useState(null);
+
+	useEffect(() => {
+		if (item['due-date']) {
+			const dueDate = item['due-date'] + 'T' + (item['due-time'] || '00:00') + ':00';
+			const dueDateObj = new Date(dueDate);
+			const oneDay = 86400000;
+			const oneHour = 3600000;
+			const oneMin = 60000;
+
+			setInterval(() => {
+				const now = new Date();
+				const endPoint = dueDateObj - item['nr-of-days']*oneDay - item['nr-of-hours']*oneHour - item['nr-of-mins']*oneMin;
+				const startPoint = endPoint - oneHour;
+				const startNow = startPoint < now && endPoint > now;
+				startNow && setStatus('start');
+				const expired = startPoint < now && endPoint < now;
+				expired && setStatus('expired');
+			}, 1000);
+		}
+	}, []);
 
 	return (
 		<div className={styles.container}>
@@ -41,6 +62,12 @@ const AwaitingStartItem = ({ item }) => {
 						{item['nr-of-mins'] && ` ${item['nr-of-mins']}m`}
 					</span>
 				</p>
+			)}
+			{status && status === 'start' && (
+				<p>Less than 1 hour left</p>
+			)}
+			{status && status === 'expired' && (
+				<p>EXPIRED</p>
 			)}
 		</div>
 	);
