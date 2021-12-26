@@ -22,13 +22,14 @@ const AddItemForm = () => {
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
 		results.checklist = checklist;
 		results.status = stats.aws;
-		results.id = createUID(10);
+		results.id = createUID(10);		
 		setToDos([...toDos, results]);
 		clearFields(e);
 	};
 
 	useEffect(() => {
 		localStorage.setItem('toDoItems', JSON.stringify(toDos));
+		document.dispatchEvent(new Event('itemInserted'));
 	}, [toDos]);
 
 	return (
