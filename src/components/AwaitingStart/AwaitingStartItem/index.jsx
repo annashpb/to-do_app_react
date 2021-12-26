@@ -13,7 +13,7 @@ const AwaitingStartItem = ({ item }) => {
 		});
 		ls.splice(index, 1);
 		localStorage.setItem('toDoItems', JSON.stringify(ls));
-		document.dispatchEvent(new Event('itemInserted'));
+		document.dispatchEvent(new Event('lsItemManipulation'));
 	}
 
 	useEffect(() => {

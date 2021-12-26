@@ -7,7 +7,7 @@ const AwaitingStart = () => {;
 		.filter(item => item.status === stats.aws));
 
 	useEffect(() => {
-		document.addEventListener('itemInserted', () => {
+		document.addEventListener('lsItemManipulation', () => {
 			setToDoItems(Array.from(JSON.parse(localStorage.getItem('toDoItems')))
 				.filter(item => item.status === stats.aws));
 		})

@@ -29,7 +29,7 @@ const AddItemForm = () => {
 
 	useEffect(() => {
 		localStorage.setItem('toDoItems', JSON.stringify(toDos));
-		document.dispatchEvent(new Event('itemInserted'));
+		document.dispatchEvent(new Event('lsItemManipulation'));
 	}, [toDos]);
 
 	return (
