@@ -64,10 +64,10 @@ const AwaitingStartItem = ({ item }) => {
 				</p>
 			)}
 			{status && status === 'start' && (
-				<p>Less than 1 hour left</p>
+				<p className={styles.warning}>Less than 1 hour left</p>
 			)}
 			{status && status === 'expired' && (
-				<p>EXPIRED</p>
+				<p className={styles.expired}>EXPIRED</p>
 			)}
 		</div>
 	);

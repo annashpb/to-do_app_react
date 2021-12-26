@@ -19,6 +19,22 @@
 	margin-block: 0.5rem;
 }
 
-// .description {
-// 	font-size: 0.875rem;
-// }
+.warning,
+.expired {
+	width: fit-content;
+	margin-left: auto;
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+}
+
+.warning {
+	border: 1px solid #6e6e00;
+	color: #6e6e00;
+	background-color: rgba(255, 255, 0, 0.3);
+}
+
+.expired {
+	border: 1px solid #ff0000;
+	color: #ff0000;
+	background-color: rgba(255, 0, 0, 0.3);
+}
