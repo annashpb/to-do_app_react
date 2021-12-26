@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .container {
 	border: 1px solid $border;
@@ -25,6 +26,7 @@
 	margin-left: auto;
 	padding: 0.25rem;
 	border-radius: 0.25rem;
+	margin-block: 0.5rem;
 }
 
 .warning {
@@ -37,4 +39,27 @@
 	border: 1px solid #ff0000;
 	color: #ff0000;
 	background-color: rgba(255, 0, 0, 0.3);
+}
+
+.btnsWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+.itemBtn {
+	@include controlBtn;
+	
+	&.edit {
+		color: #0000ff;
+	}
+	
+	&.remove {
+		color: #ff0000;
+	}
+}
+
+.moveToProgressBtn {
+	@include btnStyles(#fff, #00e9b6, #00bb92);
 }

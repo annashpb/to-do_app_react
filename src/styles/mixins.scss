@@ -25,3 +25,12 @@
 		box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.1);
 	}
 }
+
+@mixin controlBtn {
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	justify-self: center;
+	background-color: transparent;
+	cursor: pointer;
+}

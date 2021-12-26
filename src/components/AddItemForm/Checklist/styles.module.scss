@@ -21,12 +21,13 @@
 }
 
 .itemBtn {
-	width: 2rem;
-	height: 2rem;
-	border: none;
-	justify-self: center;
-	background-color: transparent;
-	cursor: pointer;
+	// width: 2rem;
+	// height: 2rem;
+	// border: none;
+	// justify-self: center;
+	// background-color: transparent;
+	// cursor: pointer;
+	@include controlBtn;
 
 	&.edit {
 		color: #0000ff;

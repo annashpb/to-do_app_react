@@ -69,6 +69,25 @@ const AwaitingStartItem = ({ item }) => {
 			{status && status === 'expired' && (
 				<p className={styles.expired}>EXPIRED</p>
 			)}
+			<div className={styles.btnsWrapper}>
+				<div>
+					<button
+						type="button"
+						title="Edit"
+						className={`${styles.itemBtn} ${styles.edit}`}
+					>
+						&#9998;
+					</button>
+					<button
+						type="button"
+						title="Remove item"
+						className={`${styles.itemBtn} ${styles.remove}`}
+					>
+						&#10007;
+					</button>
+				</div>
+				<button type="button" className={styles.moveToProgressBtn} title="Move to progress">&#10095;</button>
+			</div>
 		</div>
 	);
 };
