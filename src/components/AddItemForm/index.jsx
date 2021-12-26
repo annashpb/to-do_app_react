@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import createUID from 'create-unique-id';
 import Checklist from './Checklist';
 import styles from './styles.module.scss';
 import { stats } from '../../utils';
@@ -21,6 +22,7 @@ const AddItemForm = () => {
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
 		results.checklist = checklist;
 		results.status = stats.aws;
+		results.id = createUID(10);
 		setToDos([...toDos, results]);
 		clearFields(e);
 	};
