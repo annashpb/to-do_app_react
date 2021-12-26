@@ -6,6 +6,16 @@ import styles from './styles.module.scss';
 const AwaitingStartItem = ({ item }) => {
 	const [status, setStatus] = useState(null);
 
+	const removeItemHandle = id => {
+		const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
+		const index = ls.findIndex(object => {
+			return object.id === id;
+		});
+		ls.splice(index, 1);
+		localStorage.setItem('toDoItems', JSON.stringify(ls));
+		document.dispatchEvent(new Event('itemInserted'));
+	}
+
 	useEffect(() => {
 		if (item['due-date']) {
 			const dueDate = item['due-date'] + 'T' + (item['due-time'] || '00:00') + ':00';
@@ -82,12 +92,19 @@ const AwaitingStartItem = ({ item }) => {
 					<button
 						type="button"
 						title="Remove item"
+						onClick={() => removeItemHandle(item.id)}
 						className={classnames(styles.itemBtn, styles.remove)}
 					>
 						&#10007;
 					</button>
 				</div>
-				<button type="button" className={styles.moveToProgressBtn} title="Move to progress">&#10095;</button>
+				<button
+					type="button"
+					className={styles.moveToProgressBtn}
+					title="Move to progress"
+				>
+					&#10095;
+				</button>
 			</div>
 		</div>
 	);
