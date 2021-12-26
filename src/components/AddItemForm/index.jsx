@@ -23,7 +23,7 @@ const AddItemForm = () => {
 		results.checklist = checklist;
 		results.status = stats.aws;
 		results.id = createUID(10);		
-		setToDos([...toDos, results]);
+		setToDos([...JSON.parse(localStorage.getItem('toDoItems')), results]);
 		clearFields(e);
 	};
 

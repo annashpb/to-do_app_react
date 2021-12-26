@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { dateToDisplay } from '../../../utils';
+import { dateToDisplay, stats } from '../../../utils';
 import styles from './styles.module.scss';
 
 const AwaitingStartItem = ({ item }) => {
+	const { id } = item;
+	const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
+	const index = ls.findIndex(object => {
+		return object.id === id;
+	});
 	const [status, setStatus] = useState(null);
 
-	const removeItemHandle = id => {
-		const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
-		const index = ls.findIndex(object => {
-			return object.id === id;
-		});
-		ls.splice(index, 1);
+	const updateLS = () => {
 		localStorage.setItem('toDoItems', JSON.stringify(ls));
 		document.dispatchEvent(new Event('lsItemManipulation'));
+	}
+
+	const removeItemHandle = () => {
+		ls.splice(index, 1);
+		updateLS();
+	}
+
+	const moveToProgressHandle = () => {
+		ls[index].status = stats.inprog;
+		updateLS();
 	}
 
 	useEffect(() => {
@@ -92,7 +102,7 @@ const AwaitingStartItem = ({ item }) => {
 					<button
 						type="button"
 						title="Remove item"
-						onClick={() => removeItemHandle(item.id)}
+						onClick={removeItemHandle}
 						className={classnames(styles.itemBtn, styles.remove)}
 					>
 						&#10007;
@@ -100,8 +110,9 @@ const AwaitingStartItem = ({ item }) => {
 				</div>
 				<button
 					type="button"
-					className={styles.moveToProgressBtn}
 					title="Move to progress"
+					onClick={moveToProgressHandle}
+					className={styles.moveToProgressBtn}
 				>
 					&#10095;
 				</button>
