@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classnames from 'classnames';
 import { dateToDisplay } from '../../../utils';
 import styles from './styles.module.scss';
 
@@ -74,14 +75,14 @@ const AwaitingStartItem = ({ item }) => {
 					<button
 						type="button"
 						title="Edit"
-						className={`${styles.itemBtn} ${styles.edit}`}
+						className={classnames(styles.itemBtn, styles.edit)}
 					>
 						&#9998;
 					</button>
 					<button
 						type="button"
 						title="Remove item"
-						className={`${styles.itemBtn} ${styles.remove}`}
+						className={classnames(styles.itemBtn, styles.remove)}
 					>
 						&#10007;
 					</button>

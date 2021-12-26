@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import classnames from 'classnames';
 import styles from './styles.module.scss';
 
 const Checklist = ({ cleared, setResultChecklist }) => {
@@ -133,7 +134,7 @@ const Checklist = ({ cleared, setResultChecklist }) => {
 										type="button"
 										title="Edit"
 										onClick={() => startEditItemHandle(i)}
-										className={`${styles.itemBtn} ${styles.edit}`}
+										className={classnames(styles.itemBtn, styles.edit)}
 									>
 										&#9998;
 									</button>
@@ -141,7 +142,7 @@ const Checklist = ({ cleared, setResultChecklist }) => {
 										type="button"
 										title="Remove item"
 										onClick={() => removeItemHandle(i)}
-										className={`${styles.itemBtn} ${styles.remove}`}
+										className={classnames(styles.itemBtn, styles.remove)}
 									>
 										&#10007;
 									</button>
