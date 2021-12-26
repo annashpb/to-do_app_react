@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { dateToDisplay, stats } from '../../../utils';
+import { stats, dateToDisplay, countExpiryStatus } from '../../../utils';
 import styles from './styles.module.scss';
 
 const AwaitingStartItem = ({ item }) => {
@@ -9,7 +9,7 @@ const AwaitingStartItem = ({ item }) => {
 	const index = ls.findIndex(object => {
 		return object.id === id;
 	});
-	const [status, setStatus] = useState(null);
+	const [expiryStatus, setExpiryStatus] = useState(null);
 
 	const updateLS = () => {
 		localStorage.setItem('toDoItems', JSON.stringify(ls));
@@ -30,18 +30,16 @@ const AwaitingStartItem = ({ item }) => {
 		if (item['due-date']) {
 			const dueDate = item['due-date'] + 'T' + (item['due-time'] || '00:00') + ':00';
 			const dueDateObj = new Date(dueDate);
-			const oneDay = 86400000;
-			const oneHour = 3600000;
-			const oneMin = 60000;
 
-			setInterval(() => {
-				const now = new Date();
-				const endPoint = dueDateObj - item['nr-of-days']*oneDay - item['nr-of-hours']*oneHour - item['nr-of-mins']*oneMin;
-				const startPoint = endPoint - oneHour;
-				const startNow = startPoint < now && endPoint > now;
-				startNow && setStatus('start');
-				const expired = startPoint < now && endPoint < now;
-				expired && setStatus('expired');
+			const expStatusCheck = setInterval(() => {
+				const expStat = countExpiryStatus(
+					dueDateObj,
+					item['nr-of-days'],
+					item['nr-of-hours'],
+					item['nr-of-mins']
+				);
+				setExpiryStatus(expStat);
+				if (expStat === 'expired') clearInterval(expStatusCheck);
 			}, 1000);
 		}
 	}, []);
@@ -84,10 +82,10 @@ const AwaitingStartItem = ({ item }) => {
 					</span>
 				</p>
 			)}
-			{status && status === 'start' && (
+			{expiryStatus && expiryStatus === 'start' && (
 				<p className={styles.warning}>Less than 1 hour left</p>
 			)}
-			{status && status === 'expired' && (
+			{expiryStatus && expiryStatus === 'expired' && (
 				<p className={styles.expired}>EXPIRED</p>
 			)}
 			<div className={styles.btnsWrapper}>
