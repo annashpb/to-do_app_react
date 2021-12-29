@@ -2,7 +2,7 @@ import React from 'react';
 import AddItemForm from '../AddItemForm';
 import styles from './styles.module.scss';
 
-const EditItemModal = ({ close }) => {
+const EditItemModal = ({ item, close }) => {
 	const closeModal = e => {
 		if (e.target === e.currentTarget) {
 			close();
@@ -22,7 +22,7 @@ const EditItemModal = ({ close }) => {
 					</button>
 				</div>
 				<div>
-					<AddItemForm />
+					<AddItemForm initialData={item} />
 				</div>
 			</div>
 		</div>

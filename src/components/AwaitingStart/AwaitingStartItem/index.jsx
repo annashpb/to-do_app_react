@@ -121,7 +121,7 @@ const AwaitingStartItem = ({ item }) => {
 				</div>
 			</div>
 			{modalOpened &&
-				<EditItemModal close={() => setModalOpened(false)} />
+				<EditItemModal item={item} close={() => setModalOpened(false)} />
 			}
 		</>
 	);

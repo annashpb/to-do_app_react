@@ -4,7 +4,7 @@ import Checklist from './Checklist';
 import styles from './styles.module.scss';
 import { stats } from '../../utils';
 
-const AddItemForm = () => {
+const AddItemForm = ({ initialData }) => {
 	const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('toDoItems')) || []);
 	const [checklist, setChecklist] = useState([]);
 	const [clCleared, setClCleared] = useState(false);
@@ -43,6 +43,7 @@ const AddItemForm = () => {
 					type="text"
 					name="title"
 					required
+					defaultValue={initialData && initialData.title}
 				/>
 			</div>
 
@@ -53,6 +54,7 @@ const AddItemForm = () => {
 				<textarea
 					name="description"
 					rows="5"
+					defaultValue={initialData && initialData.description}
 				/>
 			</div>
 
@@ -73,10 +75,12 @@ const AddItemForm = () => {
 					<input
 						type="date"
 						name="due-date"
+						defaultValue={initialData && initialData['due-date']}
 					/>
 					<input
 						type="time"
 						name="due-time"
+						defaultValue={initialData && initialData['due-time']}
 					/>
 				</div>
 			</div>
@@ -91,6 +95,7 @@ const AddItemForm = () => {
 							min="0"
 							max="99"
 							step="1"
+							defaultValue={initialData && initialData['nr-of-days']}
 							className={styles.timeReqInput}
 						/>
 						<label htmlFor="nr-of-days" className={styles.timeReqLabel}>Days</label>
@@ -103,6 +108,7 @@ const AddItemForm = () => {
 							min="0"
 							max="23"
 							step="1"
+							defaultValue={initialData && initialData['nr-of-hours']}
 							className={styles.timeReqInput}
 						/>
 						<label htmlFor="nr-of-hours" className={styles.timeReqLabel}>Hours</label>
@@ -115,6 +121,7 @@ const AddItemForm = () => {
 							min="0"
 							max="59"
 							step="1"
+							defaultValue={initialData && initialData['nr-of-mins']}
 							className={styles.timeReqInput}
 						/>
 						<label htmlFor="nr-of-mins" className={styles.timeReqLabel}>Minutes</label>
@@ -125,7 +132,9 @@ const AddItemForm = () => {
 			<div className={styles.inputContainer}>
 				<div />
 				<div>
-					<button type="submit" className={styles.submitBtn}>Create</button>
+					<button type="submit" className={styles.submitBtn}>
+						{initialData ? 'Edit' : 'Create'}
+					</button>
 				</div>
 			</div>
 		</form>
