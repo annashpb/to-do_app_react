@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { stats } from '../../utils';
-import AwaitingStartItem from './AwaitingStartItem';
+import InProgressItem from './InProgressItem';
 
-const AwaitingStart = () => {;
+const InProgress = () => {;
 	const [toDoItems, setToDoItems] = useState(Array.from(JSON.parse(localStorage.getItem('toDoItems')))
-		.filter(item => item.status === stats.aws));
+		.filter(item => item.status === stats.inprog));
 
 	useEffect(() => {
 		document.addEventListener('lsItemManipulation', () => {
 			setToDoItems(Array.from(JSON.parse(localStorage.getItem('toDoItems')))
-				.filter(item => item.status === stats.aws));
+				.filter(item => item.status === stats.inprog));
 		})
 	}, []);
 
 	return (
 		toDoItems.map(item => (
-			<AwaitingStartItem key={item.id} item={item} />
+			<InProgressItem key={item.id} item={item} />
 		))
 	);
 };
 
-export default AwaitingStart;
+export default InProgress;
