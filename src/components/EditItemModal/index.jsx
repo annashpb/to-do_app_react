@@ -1,4 +1,5 @@
 import React from 'react';
+import AddItemForm from '../AddItemForm';
 import styles from './styles.module.scss';
 
 const EditItemModal = ({ close }) => {
@@ -20,7 +21,9 @@ const EditItemModal = ({ close }) => {
 						&#10007;
 					</button>
 				</div>
-				<p>hello world</p>
+				<div>
+					<AddItemForm />
+				</div>
 			</div>
 		</div>
 	);
