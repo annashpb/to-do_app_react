@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
 
-const Checklist = ({ cleared, setResultChecklist }) => {
-	const [checklist, setChecklist] = useState([]);
+const Checklist = ({ initialChecklist, cleared, setResultChecklist }) => {
+	const [checklist, setChecklist] = useState(initialChecklist || []);
 	const [addChecklistItem, setAddChecklistItem] = useState(false);
 	const newChecklistItem = useRef();
 

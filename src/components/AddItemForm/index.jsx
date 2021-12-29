@@ -4,7 +4,7 @@ import Checklist from './Checklist';
 import styles from './styles.module.scss';
 import { stats } from '../../utils';
 
-const AddItemForm = ({ initialData }) => {
+const AddItemForm = ({ initialData = null }) => {
 	const [toDos, setToDos] = useState(JSON.parse(localStorage.getItem('toDoItems')) || []);
 	const [checklist, setChecklist] = useState([]);
 	const [clCleared, setClCleared] = useState(false);
@@ -21,10 +21,20 @@ const AddItemForm = ({ initialData }) => {
 		const results = {};
 		Object.values(e.target).filter(item => item.name).map(item => results[item.name] = item.value);
 		results.checklist = checklist;
-		results.status = stats.aws;
-		results.id = createUID(10);		
-		setToDos([...JSON.parse(localStorage.getItem('toDoItems')), results]);
-		clearFields(e);
+
+		if (initialData) {
+			const newToDos = toDos.slice(0);
+			const index = toDos.findIndex(object => object.id === initialData.id);
+			results.status = initialData.status;
+			results.id = initialData.id;
+			newToDos[index] = results;
+			setToDos(newToDos);
+		} else {
+			results.status = stats.aws;
+			results.id = createUID(10);		
+			setToDos([...JSON.parse(localStorage.getItem('toDoItems')), results]);
+			clearFields(e);
+		}
 	};
 
 	useEffect(() => {
@@ -63,7 +73,11 @@ const AddItemForm = ({ initialData }) => {
 					Checklist
 				</div>
 				<div>
-					<Checklist cleared={clCleared} setResultChecklist={setChecklist} />
+					<Checklist
+						initialChecklist={initialData && initialData.checklist}
+						cleared={clCleared}
+						setResultChecklist={setChecklist}
+					/>
 				</div>
 			</div>
 
