@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { stats, dateToDisplay, countExpiryStatus } from '../../../utils';
-import EditItemModal from '../../EditItemModal';
+import { stats, dateToDisplay, countExpiryStatus } from '../../utils';
+import EditItemModal from '../EditItemModal';
 import styles from './styles.module.scss';
 
-const InProgressItem = ({ item }) => {
+const AwaitingStartItem = ({ item }) => {
 	const { id } = item;
 	const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
 	const index = ls.findIndex(object => {
@@ -24,7 +24,7 @@ const InProgressItem = ({ item }) => {
 	}
 
 	const moveToProgressHandle = () => {
-		ls[index].status = stats.done;
+		ls[index].status = stats.inprog;
 		updateLS();
 	}
 
@@ -127,4 +127,4 @@ const InProgressItem = ({ item }) => {
 	);
 };
 
-export default InProgressItem;
+export default AwaitingStartItem;
