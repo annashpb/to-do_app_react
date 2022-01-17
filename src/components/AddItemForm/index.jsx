@@ -147,7 +147,7 @@ const AddItemForm = ({ initialData = null }) => {
 				<div />
 				<div>
 					<button type="submit" className={styles.submitBtn}>
-						{initialData ? 'Edit' : 'Create'}
+						{initialData ? 'Apply' : 'Create'}
 					</button>
 				</div>
 			</div>
