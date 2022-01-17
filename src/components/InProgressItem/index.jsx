@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { stats, dateToDisplay, countExpiryStatus } from '../../utils';
+import ChecklistCheckbox from '../ChecklistCheckbox';
 import EditItemModal from '../EditItemModal';
 import styles from './styles.module.scss';
 
@@ -44,7 +45,7 @@ const InProgressItem = ({ item }) => {
 				if (expStat === 'expired') clearInterval(expStatusCheck);
 			}, 1000);
 		}
-	}, []);
+	}, [item]);
 
 	return (
 		<>
@@ -62,7 +63,9 @@ const InProgressItem = ({ item }) => {
 				{item.checklist && item.checklist.length > 0 && (
 					<ul>
 						{item.checklist.map(CLitem => (
-							<li key={CLitem}>{CLitem}</li>
+							<li key={CLitem}>
+								<ChecklistCheckbox item={CLitem} />
+							</li>
 						))}
 					</ul>
 				)}
