@@ -44,7 +44,7 @@ const AwaitingStartItem = ({ item }) => {
 				if (expStat === 'expired') clearInterval(expStatusCheck);
 			}, 1000);
 		}
-	}, []);
+	}, [item]);
 
 	return (
 		<>
