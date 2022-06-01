@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { stats } from '../../utils';
 import AwaitingStartItem from '../AwaitingStartItem';
 import InProgressItem from '../InProgressItem';
+import DoneItem from '../DoneItem';
 
 const CardsFilter = ({ column }) => {
 	const lsItems = JSON.parse(localStorage.getItem('toDoItems')) || [];
@@ -29,8 +30,13 @@ const CardsFilter = ({ column }) => {
 				))
 			);
 		case stats.done:
+			return (
+				toDoItems && toDoItems.length > 0 && toDoItems.map(item => (
+					<DoneItem key={item.id} item={item} />
+				))
+			);
 		default:
-			return "a list gonna be added here soon";
+			return null;
 	}
 };
 
