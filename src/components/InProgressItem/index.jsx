@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { stats, dateToDisplay, countExpiryStatus } from '../../utils';
-import ChecklistCheckbox from '../ChecklistCheckbox';
+import { stats, countExpiryStatus } from '../../utils';
+import CardText from '../CardText';
 import EditItemModal from '../EditItemModal';
 import styles from './styles.module.scss';
 
 const InProgressItem = ({ item }) => {
-	const { id, title, description, checklist } = item;
+	const { id } = item;
 	const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
 	const index = ls.findIndex(object => {
 		return object.id === id;
@@ -45,44 +45,7 @@ const InProgressItem = ({ item }) => {
 	return (
 		<>
 			<div className={styles.container}>
-				{title && (
-					<p className={styles.cardTitle}>
-						{title}
-					</p>
-				)}
-				{description && (
-					<p className={styles.particle}>
-						{description}
-					</p>
-				)}
-				{checklist && checklist.length > 0 && (
-					<ul>
-						{checklist.map(CLitem => (
-							<li key={CLitem}>
-								<ChecklistCheckbox item={CLitem} />
-							</li>
-						))}
-					</ul>
-				)}
-				{item['due-date'] && (
-					<p className={styles.particle}>
-						<strong>Due date:&nbsp;</strong>
-						<span>
-							{dateToDisplay(item['due-date'])}
-							{item['due-time'] && ` ${item['due-time']}`}
-						</span>
-					</p>
-				)}
-				{(item['nr-of-days'] || item['nr-of-hours'] || item['nr-of-mins']) && (
-					<p className={styles.particle}>
-						<strong>Time required:</strong>
-						<span>
-							{item['nr-of-days'] && ` ${item['nr-of-days']}d`}
-							{item['nr-of-hours'] && ` ${item['nr-of-hours']}h`}
-							{item['nr-of-mins'] && ` ${item['nr-of-mins']}m`}
-						</span>
-					</p>
-				)}
+				<CardText item={item} />
 				{expiryStatus && expiryStatus === 'start' && (
 					<p className={styles.warning}>Less than 1 hour left</p>
 				)}

@@ -4,7 +4,6 @@ import styles from './styles.module.scss';
 const ChecklistCheckbox = ({ item }) => {
 	const [checked, setChecked] = useState(false);
 	const itemId = item.toLowerCase().replaceAll(' ', '-');
-	console.log(item.toLowerCase().replaceAll(' ', '-'));
 
 	const crossItem = () => {
 		setChecked(!checked);
