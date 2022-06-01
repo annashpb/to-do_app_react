@@ -35,12 +35,7 @@ const InProgressItem = ({ item }) => {
 			const dueDateObj = new Date(dueDate);
 
 			const expStatusCheck = setInterval(() => {
-				const expStat = countExpiryStatus(
-					dueDateObj,
-					item['nr-of-days'],
-					item['nr-of-hours'],
-					item['nr-of-mins']
-				);
+				const expStat = countExpiryStatus(dueDateObj);
 				setExpiryStatus(expStat);
 				if (expStat === 'expired') clearInterval(expStatusCheck);
 			}, 1000);
