@@ -6,7 +6,7 @@ import EditItemModal from '../EditItemModal';
 import styles from './styles.module.scss';
 
 const InProgressItem = ({ item }) => {
-	const { id } = item;
+	const { id, title, description, checklist } = item;
 	const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
 	const index = ls.findIndex(object => {
 		return object.id === id;
@@ -45,19 +45,19 @@ const InProgressItem = ({ item }) => {
 	return (
 		<>
 			<div className={styles.container}>
-				{item.title && (
+				{title && (
 					<p className={styles.cardTitle}>
-						{item.title}
+						{title}
 					</p>
 				)}
-				{item.description && (
+				{description && (
 					<p className={styles.particle}>
-						{item.description}
+						{description}
 					</p>
 				)}
-				{item.checklist && item.checklist.length > 0 && (
+				{checklist && checklist.length > 0 && (
 					<ul>
-						{item.checklist.map(CLitem => (
+						{checklist.map(CLitem => (
 							<li key={CLitem}>
 								<ChecklistCheckbox item={CLitem} />
 							</li>
