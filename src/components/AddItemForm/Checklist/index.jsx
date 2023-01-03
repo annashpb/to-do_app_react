@@ -81,7 +81,7 @@ const Checklist = ({ initialChecklist, cleared, setResultChecklist }) => {
 	// TO PASS THE CHECKLIST TO A PARENT COMPONENT
 	useEffect(() => {
 		setResultChecklist(checklist)
-	}, [checklist]);
+	}, [checklist, setResultChecklist]);
 
 	// TO CLEAR THE CHECKLIST ON THE FORM SUBMIT
 	useEffect(() => {
@@ -89,7 +89,7 @@ const Checklist = ({ initialChecklist, cleared, setResultChecklist }) => {
 			setChecklist([]);
 			setResultChecklist([]);
 		}
-	}, [cleared]);
+	}, [cleared, setResultChecklist]);
 
 	return (
 		<>

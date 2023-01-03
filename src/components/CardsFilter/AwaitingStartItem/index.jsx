@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
-import { stats, countExpiryStatus } from '../../utils';
-import CardText from '../CardText';
-import EditItemModal from '../EditItemModal';
+import { stats, countExpiryStatus } from '../../../utils';
+import CardText from '../../CardParticles/CardText';
+import EditItemModal from '../../EditItemModal';
 import styles from './styles.module.scss';
 
 const AwaitingStartItem = ({ item }) => {

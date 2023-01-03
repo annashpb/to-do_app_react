@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { stats } from '../../utils';
-import AwaitingStartItem from '../AwaitingStartItem';
-import InProgressItem from '../InProgressItem';
-import DoneItem from '../DoneItem';
+import AwaitingStartItem from './AwaitingStartItem';
+import InProgressItem from './InProgressItem';
+import DoneItem from './DoneItem';
 
 const CardsFilter = ({ column }) => {
 	const lsItems = JSON.parse(localStorage.getItem('toDoItems')) || [];

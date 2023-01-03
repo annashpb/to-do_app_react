@@ -1,5 +1,5 @@
 import React from 'react';
-import CardText from '../CardText';
+import CardText from '../../CardParticles/CardText';
 import styles from './styles.module.scss';
 
 const DoneItem = ({ item }) => {

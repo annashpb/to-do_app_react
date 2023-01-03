@@ -1,6 +1,6 @@
 import React from 'react';
-import { stats, dateToDisplay } from '../../utils';
-import ChecklistCheckbox from '../ChecklistCheckbox';
+import { stats, dateToDisplay } from '../../../utils';
+import ChecklistCheckbox from './ChecklistCheckbox';
 import styles from './styles.module.scss';
 
 const CardText = ({ item }) => {
