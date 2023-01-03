@@ -1,0 +1,7 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.removeItemBtn {
+	@include controlBtn;
+	color: #ff0000;
+}

@@ -1,16 +1,6 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/mixins.scss';
 
-.container {
-	border: 1px solid $border;
-	padding: 0.5rem;
-	font-size: 0.875rem;
-
-	&:not(:last-child) {
-		margin-bottom: 0.5rem;
-	}
-}
-
 .warning,
 .expired {
 	width: fit-content;
@@ -30,27 +20,4 @@
 	border: 1px solid #ff0000;
 	color: #ff0000;
 	background-color: rgba(255, 0, 0, 0.3);
-}
-
-.btnsWrapper {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-
-.itemBtn {
-	@include controlBtn;
-	
-	&.edit {
-		color: #0000ff;
-	}
-	
-	&.remove {
-		color: #ff0000;
-	}
-}
-
-.moveToProgressBtn {
-	@include btnStyles(#fff, #00e9b6, #00bb92);
 }

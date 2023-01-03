@@ -11,8 +11,8 @@ const ChecklistCheckbox = ({ item }) => {
 
 	return (
 		<>
-			<input type="checkbox" id={itemId} checked={checked} onClick={crossItem} />
-			<label for={itemId} className={checked ? styles.crossed : null}>{item}</label>
+			<input type="checkbox" id={itemId} checked={checked} onChange={crossItem} />
+			<label htmlFor={itemId} className={checked ? styles.crossed : null}>{item}</label>
 		</>
 	)
 };

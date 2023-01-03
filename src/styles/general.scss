@@ -101,3 +101,13 @@ button {
 		grid-column: 3;
 	}
 }
+
+.cardContainer {
+	border: 1px solid $border;
+	padding: 0.5rem;
+	font-size: 0.875rem;
+
+	&:not(:last-child) {
+		margin-bottom: 0.5rem;
+	}
+}

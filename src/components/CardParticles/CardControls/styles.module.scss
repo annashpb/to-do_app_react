@@ -1,0 +1,24 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.btnsWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.itemBtn {
+	@include controlBtn;
+
+	&.edit {
+		color: #0000ff;
+	}
+
+	&.remove {
+		color: #ff0000;
+	}
+}
+
+.moveForwardBtn {
+	@include btnStyles(#fff, #00e9b6, #00bb92);
+}

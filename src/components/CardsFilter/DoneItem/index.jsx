@@ -1,25 +1,12 @@
 import React from 'react';
 import CardText from '../../CardParticles/CardText';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
-import styles from './styles.module.scss';
+import RemoveItemBtn from '../../CardParticles/RemoveItemBtn';
 
-const DoneItem = ({ item }) => {
-	const { id } = item;
-	const { removeItemHandle } = useLocalStorage(id, null);
-
-	return (
-		<div className={styles.container}>
-			<CardText item={item} />
-			<button
-				type="button"
-				title="Archive"
-				onClick={removeItemHandle}
-				className={styles.removeItemBtn}
-			>
-				&#10007;
-			</button>
-		</div>
-	);
-};
+const DoneItem = ({ item }) => (
+	<div className="cardContainer" style={{ color: '#858585' }}>
+		<CardText item={item} />
+		<RemoveItemBtn id={item.id} />
+	</div>
+);
 
 export default DoneItem;
