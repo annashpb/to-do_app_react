@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { stats, countExpiryStatus } from '../../../utils';
 import CardText from '../../CardParticles/CardText';
 import EditItemModal from '../../EditItemModal';
@@ -7,27 +8,10 @@ import styles from './styles.module.scss';
 
 const AwaitingStartItem = ({ item }) => {
 	const { id } = item;
-	const ls = Array.from(JSON.parse(localStorage.getItem('toDoItems')));
-	const index = ls.findIndex(object => {
-		return object.id === id;
-	});
+	const { removeItemHandle, moveForwardHandle } = useLocalStorage(id, stats.inprog);
+
 	const [expiryStatus, setExpiryStatus] = useState(null);
 	const [modalOpened, setModalOpened] = useState(false);
-
-	const updateLS = () => {
-		localStorage.setItem('toDoItems', JSON.stringify(ls));
-		document.dispatchEvent(new Event('lsItemManipulation'));
-	}
-
-	const removeItemHandle = () => {
-		ls.splice(index, 1);
-		updateLS();
-	}
-
-	const moveToProgressHandle = () => {
-		ls[index].status = stats.inprog;
-		updateLS();
-	}
 
 	useEffect(() => {
 		if (item['due-date']) {
@@ -79,7 +63,7 @@ const AwaitingStartItem = ({ item }) => {
 					<button
 						type="button"
 						title="Move to progress"
-						onClick={moveToProgressHandle}
+						onClick={moveForwardHandle}
 						className={styles.moveToProgressBtn}
 					>
 						&#10095;
